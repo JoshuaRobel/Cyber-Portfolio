@@ -1,3 +1,5 @@
+![Joshua Robel – Cybersecurity Portfolio](./assets/banner.png)
+
 # 🛡️ Cybersecurity Portfolio
 
 This repository showcases hands-on cybersecurity labs built on Parallels (Mac, Apple Silicon), using Kali, Ubuntu and Windows ARM. It demonstrates vulnerability assessment, web application testing, Active Directory work, SIEM, threat hunting, incident response, cloud security and malware analysis.
