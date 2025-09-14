@@ -1,4 +1,4 @@
-![Joshua Robel – Cybersecurity Portfolio](./assets/banner.png)
+<img src="./assets/banner.png" alt="Joshua Robel – Cybersecurity Portfolio" height="150">
 
 # 🛡️ Cybersecurity Portfolio
 
