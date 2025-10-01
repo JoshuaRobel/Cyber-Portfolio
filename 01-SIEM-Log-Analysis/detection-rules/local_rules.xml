@@ -1,0 +1,13 @@
+<rules>
+  <group name="local,windows,powershell">
+    <rule id="100201" level="8">
+      <if_group>powershell</if_group>
+      <field name="win.eventdata.CommandLine">Invoke-WebRequest|IEX|DownloadString</field>
+      <description>Suspicious PowerShell download cradle detected (local rule)</description>
+      <mitre>
+        <id>T1059.001</id>
+      </mitre>
+      <options>no_full_log</options>
+    </rule>
+  </group>
+</rules>

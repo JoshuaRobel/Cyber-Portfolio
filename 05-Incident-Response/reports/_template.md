@@ -2,7 +2,7 @@
 
 - **Date/Time (AEST)**: <2025-10-01 14:32>
 - **Reporter**: Josh
-- **Environment**: Parallels Host-Only lab
+- **Environment**: Parallels Host-Only lab (10.10.10.0/24)
 - **Summary**: <1–2 lines>
 
 ## 1. Detection & Analysis
@@ -19,7 +19,3 @@
 ## 3. Lessons Learned
 - **Gaps**: <visibility, process, controls>
 - **Improvements**: <detections, hardening, training>
-
-## Appendix
-- **Screenshots/Logs**: see `/screenshots/`
-- **Links/Commits**: <commit ids, files>

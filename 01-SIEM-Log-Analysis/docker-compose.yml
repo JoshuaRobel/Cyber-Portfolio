@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  wazuh.manager:
+    image: wazuh/wazuh-manager:4.9.0
+    restart: unless-stopped
+    hostname: wazuh-manager
+    environment:
+      - "TZ=Australia/Brisbane"
+      - "API_USERNAME=admin"
+      - "API_PASSWORD=AdminPassword123!"
+    ports:
+      - "1514:1514/udp"
+      - "1514:1514/tcp"
+      - "55000:55000"
+    networks: [wazuh-net]
+
+  wazuh.indexer:
+    image: wazuh/wazuh-indexer:4.9.0
+    restart: unless-stopped
+    hostname: wazuh-indexer
+    environment:
+      - "DISCOVERY_TYPE=single-node"
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks: [wazuh-net]
+
+  wazuh.dashboard:
+    image: wazuh/wazuh-dashboard:4.9.0
+    restart: unless-stopped
+    hostname: wazuh-dashboard
+    environment:
+      - "INDEXER_URL=https://wazuh-indexer:9200"
+      - "WAZUH_API_USER=admin"
+      - "WAZUH_API_PASSWORD=AdminPassword123!"
+    ports:
+      - "5601:5601"
+    depends_on:
+      - wazuh.manager
+    networks: [wazuh-net]
+
+networks:
+  wazuh-net:
+    driver: bridge

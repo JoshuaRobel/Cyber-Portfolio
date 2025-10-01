@@ -17,11 +17,3 @@ detection:
 level: medium
 tags:
   - attack.t1059.001
-references:
-  - https://attack.mitre.org/techniques/T1059/001/
-falsepositives:
-  - Legitimate admin scripts that fetch internal resources.
-fields:
-  - ComputerName
-  - User
-  - CommandLine
