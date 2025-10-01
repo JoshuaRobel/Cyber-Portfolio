@@ -1,46 +1,40 @@
-![Joshua Robel – Cybersecurity Portfolio](./assets/banner.png)
+# Cybersecurity Portfolio — SOC Analyst Focus
 
-# 🛡️ Cybersecurity Portfolio
+Hi, I'm Josh. This monorepo contains hands-on **blue-team labs** designed for a SOC/IR role.
+All projects are reproducible on a **Mac (Apple Silicon) using Parallels** with ARM VMs.
 
-This repository showcases hands-on cybersecurity labs built on Parallels (Mac, Apple Silicon), using Kali, Ubuntu and Windows ARM. It demonstrates vulnerability assessment, web application testing, Active Directory work, SIEM, threat hunting, incident response, cloud security and malware analysis.
+## Projects
+1. **01-SIEM-Log-Analysis** — Wazuh/ELK with Windows + Linux agents, detections, dashboards.
+2. **02-Active-Directory-Lab** — Windows Server AD, client attacks from Kali, detections in SIEM.
+3. **03-Sigma-Rules** — Custom Sigma rules mapped to ATT&CK, with test data and validation.
+4. **04-Vulnerability-Management** — Greenbone/OpenVAS scans, triage, and remediation plan.
+5. **05-Incident-Response** — NIST 800-61 styled IR reports from simulated incidents.
+6. **06-Network-Monitoring** — Zeek + Suricata for network visibility and detections.
 
----
+## How to Use
+- Each folder has a **README** with goals, architecture, SOP steps, and deliverables.
+- Screenshots and diagrams live in each project folder under `/screenshots/` (placeholders included).
+- Configs/rules/scripts live under `/config-files/`, `/detection-rules/`, or `/scripts/` per project.
 
-## 👤 About me
-I am Joshua Robel, building a practical, lab-based cybersecurity portfolio. My focus areas include penetration testing, threat detection and incident response.
+## Apple Silicon + Parallels Notes
+- Use **ARM64** guest OS images (Ubuntu Server ARM64, Windows 11 ARM).
+- Prefer **Docker containers** where possible (many security tools provide ARM images).
+- For tools that are **x86-only**, use:  
+  - Windows 11 ARM x64 emulation (acceptable for lab demos), or  
+  - A small x86_64 cloud VM (optional, only if needed).
 
-🌏 Australia | 💼 Open to hybrid or remote roles | 🎯 Target roles: Security Analyst, SOC Analyst, Penetration Tester
+## Parallels VM Networking (Recommended)
+- **Shared/NAT**: Safe default. VMs can reach the Internet; host can reach VMs via forwarded ports.
+- **Host-Only**: Isolated lab network for attack/detection exercises (no Internet). Add a second **Shared** NIC on the SIEM VM if it needs updates.
+- **Bridged**: Use sparingly; exposes VMs directly to LAN.
 
----
+> Typical layout: All lab VMs on **Host-Only**; SIEM VM has **2 NICs** (Host-Only + Shared).
 
-## 🛠 Skills and tools
-Kali Linux, Ubuntu, Windows, Active Directory  
-Docker, Burp Suite, OWASP ZAP  
-OpenVAS, Wazuh, Elastic (ELK)  
-Sigma rules, Threat hunting  
-Incident response, Malware analysis  
-Git and GitHub
-
----
-
-## 📂 Featured projects
-
-| Project | Description | Link |
-|:---|:---|:---|
-| **Vulnerability Assessment: Ubuntu VM (DVWA, Juice Shop and Vulhub)** | Scanned intentionally vulnerable apps with nmap and OpenVAS, prioritised risks by CVSS, produced remediation reports. | [View project](./01-vuln-assessment-ubuntu/) |
-| **Web Application Penetration Testing: OWASP Juice Shop** | Tested against OWASP Top 10 using Burp Suite and ZAP, documented exploitation techniques and recommended improvements. | [View project](./02-web-pentest-juice-shop/) |
-| **Active Directory Domain Setup** | Built a Windows Server AD domain, created OUs and users, applied baseline Group Policy. | [View project](./03-ad-setup/) |
-| **Active Directory Attack and Hardening** | Mapped attack paths with BloodHound, demonstrated Kerberoasting and password spraying, then applied hardening and re-tested. | [View project](./04-ad-attack-hardening/) |
-| **SIEM Deployment and Log Analysis: Wazuh and ELK** | Deployed Wazuh, ingested Windows and Linux logs, created custom detection rules for suspicious behaviour. | [View project](./05-siem-wazuh/) |
-| **Threat Hunting with Sigma rules** | Wrote Sigma rules and ran hunts for lateral movement, persistence and credential access. | [View project](./06-threat-hunting-sigma/) |
-| **Incident Response Simulation** | Simulated a small incident, triaged, contained and recovered, produced a clear timeline and report. | [View project](./07-incident-response-sim/) |
-| **Phishing Simulation and Detection** | Built a safe phishing exercise, validated email authentication, added SIEM alerts. | [View project](./08-phishing-sim-detection/) |
-| **Malware Analysis: Static and Dynamic** | Analysed a safe sample, captured process and network behaviour, extracted IOCs and suggested detections. | [View project](./09-malware-analysis/) |
-| **Cloud Security Lab: AWS or Azure** | Reproduced a public storage misconfiguration, enabled logging, and applied least privilege IAM. | [View project](./10-cloud-security-aws-azure/) |
-| **CTF or TryHackMe Walkthroughs** | Clean, structured write ups showing methodology and learning. | [View project](./11-ctf-walkthroughs-optional/) |
+## Repo Conventions
+- Diagrams exported to `.png` and kept small (< 1MB).
+- Long outputs (scan reports, PCAPs) are summarized in markdown; store large artifacts externally if needed.
+- All detections mapped to **MITRE ATT&CK** and linked to **CTI references** where relevant.
 
 ---
 
-## 📫 Contact
-- LinkedIn: https://www.linkedin.com/in/joshuarobel  
-- Email: joshuarobel@gmail.com
+© 2025 Josh — MIT License

@@ -1,0 +1,27 @@
+title: Suspicious PowerShell Download Cradle
+id: 3f2a9a24-0000-4c0a-9c00-000000000001
+status: experimental
+description: Detects PowerShell commands that download remote content (e.g., Invoke-WebRequest).
+author: Josh
+date: 2025/10/01
+logsource:
+  product: windows
+  service: powershell
+detection:
+  selection_command:
+    CommandLine|contains:
+      - "Invoke-WebRequest"
+      - "IEX"
+      - "DownloadString"
+  condition: selection_command
+level: medium
+tags:
+  - attack.t1059.001
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+falsepositives:
+  - Legitimate admin scripts that fetch internal resources.
+fields:
+  - ComputerName
+  - User
+  - CommandLine
